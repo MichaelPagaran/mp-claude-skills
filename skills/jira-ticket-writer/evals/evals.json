@@ -1,0 +1,23 @@
+{
+  "skill_name": "jira-ticket-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "can you make a jira ticket for this? support just pinged me — Jane Doe (jane.doe@acme-client.com) says she can't download her certificate PDF since yesterday's release, button just spins forever. happens in chrome, she tried twice. project is EDGE",
+      "expected_output": "A Bug draft for project EDGE with a symptom-style summary, the standard's Bug sections, the customer's name and email replaced with placeholders, missing details listed under open questions, and no ticket created in Jira.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Turn this into a story: admins keep asking for a way to bulk export their learner list with completion status so they can report to their managers. Probably CSV is fine.",
+      "expected_output": "A Story draft in 'As a ..., I want ..., so that ...' form with at least two testable acceptance criteria, the project marked as not set and asked for, and no ticket created in Jira.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Log a ticket in EDGE: we need to upgrade the API service from Node 18 to Node 22 before Node 18 goes EOL. Also the login page logo is blurry on retina screens.",
+      "expected_output": "Recognizes two separate pieces of work, suggests splitting them, and asks which to draft first (or drafts the first one and offers the second as a separate ticket). No ticket created in Jira.",
+      "files": []
+    }
+  ]
+}
