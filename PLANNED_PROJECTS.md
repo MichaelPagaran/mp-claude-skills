@@ -13,7 +13,7 @@ A running list of potential projects/skills to add to this repo.
 ## In Progress
 
 - **jira-ticket-writer**: Turns rough notes, bug reports, or feature requests into well-structured Jira tickets with a summary, description, acceptance criteria, and suggested labels/priority.
-  - v1 drafted in `skills/jira-ticket-writer/`: single ticket, org standard, draft-then-publish. Not yet tested.
+  - v1 drafted in `plugins/jira-ticket-writer/`: single ticket, org standard, draft-then-publish. Not yet tested.
 
 ## Done
 

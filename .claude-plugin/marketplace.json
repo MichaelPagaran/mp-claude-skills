@@ -1,0 +1,12 @@
+{
+  "name": "mp-claude-skills",
+  "owner": { "name": "Martin Pagaran" },
+  "description": "Martin Pagaran's personal Claude Code skills, one plugin per skill",
+  "plugins": [
+    {
+      "name": "jira-ticket-writer",
+      "source": "./plugins/jira-ticket-writer",
+      "description": "Drafts a single Jira ticket following your org's standard; publishes only after you confirm."
+    }
+  ]
+}

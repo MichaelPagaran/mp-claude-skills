@@ -1,0 +1,6 @@
+{
+  "name": "jira-ticket-writer",
+  "description": "Drafts a single Jira ticket from rough input following your org's standard, and publishes only after you confirm.",
+  "author": { "name": "Martin Pagaran" },
+  "repository": "https://github.com/MichaelPagaran/mp-claude-skills"
+}
