@@ -13,9 +13,31 @@ Version 1 handles **one ticket per request**. If the input clearly describes sev
 
 The standard defines the issue types, required sections, summary style, priority rules, and labels. Read it before drafting, since that's what makes the ticket look like the team's other tickets rather than a generic one.
 
-1. Read `references/standards.md` (bundled with this skill). This is the default standard.
-2. If the user shares a Confluence link to a ticket standard, or `standards.md` lists a `Confluence source` URL, fetch that page with the Atlassian `getConfluenceContent` tool (`detail: "full"`, `content_format: "markdown"`). Where it conflicts with the local file, the Confluence page wins, because it's the version the team maintains.
-3. If the Confluence fetch fails, carry on with the local file and mention it in one line. Don't block the draft on it.
+The standard comes from one of three places. Use the first one that applies:
+
+1. **A Confluence link in the current request.** It applies to this ticket only. Don't save it.
+2. **The saved Confluence page**, if the user has set one (see below).
+3. **The bundled default**, `references/standards.md`.
+
+Always read `references/standards.md`. When a Confluence page is used, fetch it with the Atlassian `getConfluenceContent` tool (`detail: "full"`, `content_format: "markdown"`). Where the page and the local file disagree, the page wins, because it's the version the team maintains. If the fetch fails, carry on with the local file, say so in one line, and suggest `/jira-ticket-writer:set-standard` to fix the link. Don't block the draft on it.
+
+### The saved setting
+
+The user's choice is kept in a small JSON file, so they never have to edit configuration by hand:
+
+- **Path:** `${CLAUDE_PLUGIN_DATA}/config.json`. If the path still shows the literal text `${CLAUDE_PLUGIN_DATA}` (because the skill isn't running as an installed plugin), use `~/.claude/jira-ticket-writer/config.json` instead.
+- **Format:** `{ "standards_url": "<confluence url>" or null, "updated": "<YYYY-MM-DD>" }`. A `null` URL means the user chose the built-in default.
+
+**If the file doesn't exist yet**, this is the first run on this machine. Before drafting, ask once:
+
+> Quick one-time setup: does your team have a Confluence page with ticket policies? Paste the link, or say "skip" to use the built-in default. You can change this anytime with `/jira-ticket-writer:set-standard`.
+
+- **They give a link:** check that you can read it with `getConfluenceContent` (`detail: "outline"`). If you can, save it and mention the page title. If you can't, tell them and ask whether to save it anyway or skip.
+- **They say skip, or ignore the question:** save `null`.
+
+Then carry on with the ticket in the same turn, so setup never costs the user an extra round. Create the folder if needed, and write the file with the Write tool.
+
+**If the file exists**, don't ask again. Use the saved URL, or the default if it's `null`.
 
 ## Step 2: Understand the input
 

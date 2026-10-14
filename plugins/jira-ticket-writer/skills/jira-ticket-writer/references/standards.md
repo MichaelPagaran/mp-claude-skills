@@ -1,9 +1,6 @@
 # Jira Ticket Standard
 
-This is the default ticket standard for the `jira-ticket-writer` skill. Edit it to match how your team writes tickets.
-
-**Confluence source:** none
-<!-- To use a Confluence page as the source of truth, replace "none" with the page URL. The skill fetches it and treats it as overriding this file. -->
+This is the default ticket standard for the `jira-ticket-writer` skill. It's used when no Confluence standard is set. To set one, run `/jira-ticket-writer:set-standard <confluence-url>`.
 
 ## Issue types
 

@@ -110,6 +110,34 @@ You can use a skill in two ways:
   /jira-ticket-writer:jira-ticket-writer
   ```
 
+## Configuring plugins
+
+Some plugins have settings. Claude asks for them and saves them, so you never edit configuration files by hand. Settings are kept when the plugin updates, removed when you uninstall it, and take effect right away with no restart.
+
+### jira-ticket-writer: ticket standard
+
+By default, tickets follow a built-in standard. The first time you ask for a ticket, Claude asks once whether your team has a Confluence page with ticket policies. Paste the link, or say "skip" to keep the default.
+
+To change it later:
+
+```
+/jira-ticket-writer:set-standard https://<your-site>.atlassian.net/wiki/spaces/<SPACE>/pages/<id>
+```
+```
+/jira-ticket-writer:set-standard default
+```
+```
+/jira-ticket-writer:set-standard show
+```
+
+- The first sets a new page. Claude checks that it can read the page before saving it.
+- `default` goes back to the built-in standard.
+- `show` shows which standard is in use.
+
+You can also just ask, for example: "use this Confluence page as our ticket standard: …".
+
+To use a different page for one ticket only, paste its link in your request. Your saved setting doesn't change.
+
 ## Updating plugins
 
 In Claude Code:
@@ -155,4 +183,4 @@ claude plugin marketplace remove mp-claude-skills
 
 | Plugin | What it does | Requires |
 |---|---|---|
-| `jira-ticket-writer` | Drafts one Jira ticket from rough notes using your org's standard, and creates it only after you confirm | Atlassian connector |
+| `jira-ticket-writer` | Drafts one Jira ticket from rough notes using your org's standard, and creates it only after you confirm. `/jira-ticket-writer:set-standard` picks the Confluence page it follows. | Atlassian connector |
